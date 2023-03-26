@@ -1,6 +1,6 @@
 <?php
 
-namespace TrackingMore\TrackingMore;
+namespace TrackingMore;
 
 use GuzzleHttp\Client as GuzzleClient;
 use Psr\Http\Message\ResponseInterface;

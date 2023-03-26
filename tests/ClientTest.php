@@ -7,7 +7,7 @@ use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
-use TrackingMore\TrackingMore\Client;
+use TrackingMore\Client;
 
 class ClientTest extends TestCase
 {
