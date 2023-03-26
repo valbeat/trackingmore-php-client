@@ -15,7 +15,8 @@ class Client
      */
     private $httpClient;
     /**
-     * @var string */
+     * @var string
+     */
     private $apiKey;
 
     public function __construct(string $apiKey)
