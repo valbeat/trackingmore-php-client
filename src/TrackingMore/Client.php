@@ -3,31 +3,27 @@
 namespace TrackingMore\TrackingMore;
 
 use GuzzleHttp\Client as GuzzleClient;
-use GuzzleHttp\Exception\GuzzleException;
 use Psr\Http\Message\ResponseInterface;
 
 class Client
 {
     private const BASE_URI = 'https://api.trackingmore.com/v4/';
 
-    /**
-     * @var GuzzleClient
-     */
+    /** @var GuzzleClient */
     private $httpClient;
-    /**
-     * @var string
-     */
-    private $apiKey;
 
-    public function __construct(string $apiKey)
+    public function __construct(string $apiKey, ?GuzzleClient $httpClient)
     {
-        $this->apiKey     = $apiKey;
+        if ($httpClient) {
+            $this->httpClient = $httpClient;
+            return;
+        }
         $this->httpClient = new GuzzleClient(
             [
                 'base_uri' => self::BASE_URI,
                 'headers'  => [
                     'Content-Type'     => 'application/json',
-                    'Tracking-Api-Key' => $this->apiKey,
+                    'Tracking-Api-Key' => $apiKey,
                 ],
             ]
         );
@@ -37,7 +33,7 @@ class Client
     {
         try {
             return $this->httpClient->get('carriers');
-        } catch (GuzzleException $e) {
+        } catch (\Exception $e) {
             throw new \RuntimeException('Error fetching carriers: ' . $e->getMessage());
         }
     }
@@ -53,7 +49,7 @@ class Client
             ];
 
             return $this->httpClient->post('trackings', $payload);
-        } catch (GuzzleException $e) {
+        } catch (\Exception $e) {
             throw new \RuntimeException('Error creating tracking item: ' . $e->getMessage());
         }
     }
@@ -62,7 +58,7 @@ class Client
     {
         try {
             return $this->httpClient->get("trackings/{$carrierCode}/{$trackingNumber}");
-        } catch (GuzzleException $e) {
+        } catch (\Exception $e) {
             throw new \RuntimeException('Error fetching tracking item: ' . $e->getMessage());
         }
     }
@@ -75,7 +71,7 @@ class Client
             ];
 
             return $this->httpClient->put("trackings/{$carrierCode}/{$trackingNumber}", $payload);
-        } catch (GuzzleException $e) {
+        } catch (\Exception $e) {
             throw new \RuntimeException('Error updating tracking item: ' . $e->getMessage());
         }
     }
@@ -84,7 +80,7 @@ class Client
     {
         try {
             return $this->httpClient->delete("trackings/{$carrierCode}/{$trackingNumber}");
-        } catch (GuzzleException $e) {
+        } catch (\Exception $e) {
             throw new \RuntimeException('Error deleting tracking item: ' . $e->getMessage());
         }
     }
@@ -99,7 +95,7 @@ class Client
             ];
 
             return $this->httpClient->post('trackings/batch', $payload);
-        } catch (GuzzleException $e) {
+        } catch (\Exception $e) {
             throw new \RuntimeException('Error batch creating tracking items: ' . $e->getMessage());
         }
     }
@@ -108,7 +104,7 @@ class Client
     {
         try {
             return $this->httpClient->get('trackings', ['query' => $parameters]);
-        } catch (GuzzleException $e) {
+        } catch (\Exception $e) {
             throw new \RuntimeException('Error fetching tracking items: ' . $e->getMessage());
         }
     }
@@ -117,7 +113,7 @@ class Client
     {
         try {
             return $this->httpClient->put("trackings/{$carrierCode}/{$trackingNumber}/retrack");
-        } catch (GuzzleException $e) {
+        } catch (\Exception $e) {
             throw new \RuntimeException('Error retracking expired tracking item: ' . $e->getMessage());
         }
     }
@@ -133,7 +129,7 @@ class Client
             ];
 
             return $this->httpClient->post('trackings/realtime', $payload);
-        } catch (GuzzleException $e) {
+        } catch (\Exception $e) {
             throw new \RuntimeException('Error fetching realtime tracking: ' . $e->getMessage());
         }
     }
@@ -142,7 +138,7 @@ class Client
     {
         try {
             return $this->httpClient->get('user/info');
-        } catch (GuzzleException $e) {
+        } catch (\Exception $e) {
             throw new \RuntimeException('Error fetching user info: ' . $e->getMessage());
         }
     }
@@ -151,7 +147,7 @@ class Client
     {
         try {
             return $this->httpClient->get("carriers/{$carrierCode}");
-        } catch (GuzzleException $e) {
+        } catch (\Exception $e) {
             throw new \RuntimeException('Error fetching carrier info: ' . $e->getMessage());
         }
     }
@@ -166,7 +162,7 @@ class Client
             ];
 
             return $this->httpClient->post('carriers/detect', $payload);
-        } catch (GuzzleException $e) {
+        } catch (\Exception $e) {
             throw new \RuntimeException('Error detecting carrier: ' . $e->getMessage());
         }
     }
