@@ -109,10 +109,10 @@ class Client
         }
     }
 
-    public function retrackExpiredTrackingItem(string $trackingNumber, string $carrierCode): ResponseInterface
+    public function retrackExpiredTrackingItem(string $trackingNumber): ResponseInterface
     {
         try {
-            return $this->httpClient->put("trackings/{$carrierCode}/{$trackingNumber}/retrack");
+            return $this->httpClient->post("trackings/retrack/{$trackingNumber}");
         } catch (\Exception $e) {
             throw new \RuntimeException('Error retracking expired tracking item: ' . $e->getMessage());
         }

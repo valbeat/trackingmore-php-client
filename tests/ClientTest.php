@@ -129,11 +129,10 @@ class ClientTest extends TestCase
     public function testRetrackExpiredTrackingItem(): void
     {
         $trackingNumber = '1234567890';
-        $carrierCode    = 'test-carrier';
 
         $this->mockHandler->append(new Response(200, [], '{"tracking_number": "1234567890", "carrier_code": "test-carrier", "status": "retracked"}'));
 
-        $response = $this->client->retrackExpiredTrackingItem($trackingNumber, $carrierCode);
+        $response = $this->client->retrackExpiredTrackingItem($trackingNumber);
 
         $this->assertSame(200, $response->getStatusCode());
         $this->assertJsonStringEqualsJsonString('{"tracking_number": "1234567890", "carrier_code": "test-carrier", "status": "retracked"}', (string)$response->getBody());
