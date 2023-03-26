@@ -30,10 +30,10 @@ $trackingDetails = $client->getTracking($trackingNumber);
 
 // Update tracking details
 $updateData = [...];
-$response = $client->updateTracking($code, $trackingNumber, $updateData);
+$response = $client->updateTracking($trackingNumber, $updateData);
 
 // Delete tracking
-$response = $client->deleteTracking($code, $trackingNumber);
+$response = $client->deleteTracking($trackingNumber);
 
 // And more...
 ```
