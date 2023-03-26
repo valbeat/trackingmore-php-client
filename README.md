@@ -25,16 +25,15 @@ $trackingData = [...];
 $response = $client->createTracking($trackingData);
 
 // Get tracking details
-$slug = 'carrier-slug';
 $trackingNumber = 'tracking-number';
-$trackingDetails = $client->getTracking($slug, $trackingNumber);
+$trackingDetails = $client->getTracking($trackingNumber);
 
 // Update tracking details
 $updateData = [...];
-$response = $client->updateTracking($slug, $trackingNumber, $updateData);
+$response = $client->updateTracking($code, $trackingNumber, $updateData);
 
 // Delete tracking
-$response = $client->deleteTracking($slug, $trackingNumber);
+$response = $client->deleteTracking($code, $trackingNumber);
 
 // And more...
 ```
