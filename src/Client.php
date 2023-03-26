@@ -12,7 +12,7 @@ class Client
     /** @var GuzzleClient */
     private $httpClient;
 
-    public function __construct(string $apiKey, ?GuzzleClient $httpClient)
+    public function __construct(string $apiKey, ?GuzzleClient $httpClient = null)
     {
         if ($httpClient) {
             $this->httpClient = $httpClient;
