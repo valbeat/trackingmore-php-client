@@ -45,12 +45,9 @@ class ClientTest extends TestCase
 
     public function testCreateTracking(): void
     {
-        $trackingNumber = '1234567890';
-        $courierCode    = 'test-courier';
-
         $this->mockHandler->append(new Response(200, [], '{"tracking_number": "1234567890", "courier_code": "test-courier"}'));
 
-        $response = $this->client->createTracking($trackingNumber, $courierCode);
+        $response = $this->client->createTracking(["tracking_number" => "1234567890", "courier_code" => "test-courier"]);
 
         $this->assertSame(200, $response->getStatusCode());
         $this->assertJsonStringEqualsJsonString('{"tracking_number": "1234567890", "courier_code": "test-courier"}', (string)$response->getBody());
@@ -59,12 +56,11 @@ class ClientTest extends TestCase
     public function testUpdateTracking(): void
     {
         $trackingNumber = '1234567890';
-        $courierCode    = 'test-courier';
         $title          = 'Updated title';
 
         $this->mockHandler->append(new Response(200, [], '{"tracking_number": "1234567890", "courier_code": "test-courier", "title": "Updated title"}'));
 
-        $response = $this->client->updateTracking($trackingNumber, $courierCode, ['title' => $title]);
+        $response = $this->client->updateTracking($trackingNumber, ['title' => $title]);
 
         $this->assertSame(200, $response->getStatusCode());
         $this->assertJsonStringEqualsJsonString('{"tracking_number": "1234567890", "courier_code": "test-courier", "title": "Updated title"}', (string)$response->getBody());
