@@ -32,7 +32,7 @@ class Client
     public function listCouriers(): ResponseInterface
     {
         try {
-            return $this->httpClient->get('couriers');
+            return $this->httpClient->get('couriers/all');
         } catch (\Exception $e) {
             throw new \RuntimeException('Error fetching couriers: ' . $e->getMessage());
         }
