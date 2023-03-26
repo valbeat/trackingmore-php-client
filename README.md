@@ -15,8 +15,6 @@ composer require valbeat/trackingmore-php-client
 ```php
 <?php
 
-require_once 'vendor/autoload.php';
-
 use TrackingMore\TrackingMore\Client;
 
 $apiKey = 'your-api-key';
