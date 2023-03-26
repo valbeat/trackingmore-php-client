@@ -5,7 +5,7 @@
   "keywords": ["trackingmore", "api", "php"],
   "homepage": "https://github.com/valbeat/trackingmore-php-client",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "v0.0.0",
   "authors": [
     {
       "name": "Takuma Kajikawa",
