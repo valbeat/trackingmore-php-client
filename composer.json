@@ -1,0 +1,24 @@
+{
+  "name": "valbeat/trackingmore-php-client",
+  "description": "A PHP client for the TrackingMore v4 API",
+  "type": "library",
+  "keywords": ["trackingmore", "api", "php"],
+  "homepage": "https://github.com/valbeat/trackingmore-php-client",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Takuma Kajikawa",
+      "email": "kj1ktk@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.4",
+    "guzzlehttp/guzzle": "^7.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "TrackingMore\\": "src/"
+    }
+  }
+}
+
