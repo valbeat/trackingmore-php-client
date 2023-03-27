@@ -1,5 +1,7 @@
 # TrackingMore PHP Client
 
+[![Test](https://github.com/valbeat/trackingmore-php-client/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/valbeat/trackingmore-php-client/actions/workflows/test.yml)
+
 A PHP client library for the TrackingMore API.
 
 ## Installation
