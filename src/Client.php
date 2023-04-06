@@ -118,10 +118,10 @@ class Client
         }
     }
 
-    public function retrackExpiredTracking(string $trackingNumber): ResponseInterface
+    public function retrackExpiredTracking(string $trackingId): ResponseInterface
     {
         try {
-            return $this->httpClient->post("trackings/retrack/{$trackingNumber}");
+            return $this->httpClient->post("trackings/retrack/{$trackingId}");
         } catch (\Exception $e) {
             throw new \RuntimeException('Error retracking expired tracking: ' . $e->getMessage());
         }
