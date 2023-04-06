@@ -61,7 +61,7 @@ class Client
         ];
 
         try {
-            return $this->httpClient->post('trackings', $payload);
+            return $this->httpClient->post('trackings/create', $payload);
         } catch (\Exception $e) {
             throw new \RuntimeException('Error creating tracking: ' . $e->getMessage());
         }
@@ -74,7 +74,7 @@ class Client
                 RequestOptions::JSON => $updates,
             ];
 
-            return $this->httpClient->put("trackings/{$trackingNumber}", $payload);
+            return $this->httpClient->put("trackings/update/{$trackingNumber}", $payload);
         } catch (\Exception $e) {
             throw new \RuntimeException('Error updating tracking: ' . $e->getMessage());
         }
@@ -83,7 +83,7 @@ class Client
     public function deleteTracking(string $trackingNumber): ResponseInterface
     {
         try {
-            return $this->httpClient->delete("trackings/{$trackingNumber}");
+            return $this->httpClient->delete("trackings/delete/{$trackingNumber}");
         } catch (\Exception $e) {
             throw new \RuntimeException('Error deleting tracking : ' . $e->getMessage());
         }
@@ -108,7 +108,7 @@ class Client
     {
         try {
             return $this->httpClient->get(
-                'trackings',
+                'trackings/get',
                 [
                     RequestOptions::QUERY => $parameters,
                 ]
