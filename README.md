@@ -12,6 +12,10 @@ Install via [Composer](https://getcomposer.org/):
 composer require valbeat/trackingmore-php-client
 ```
 
+## Requirements
+
+PHP 7.2 or above for the latest version.
+
 ## Usage
 
 ```php
