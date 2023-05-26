@@ -1,6 +1,6 @@
 # TrackingMore PHP Client
 
-[![Test](https://github.com/valbeat/trackingmore-php-client/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/valbeat/trackingmore-php-client/actions/workflows/test.yml)
+[![Test](https://github.com/valbeat/trackingmore-php-client/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/valbeat/trackingmore-php-client/actions/workflows/test.yml) [![Latest Stable Version](http://poser.pugx.org/valbeat/trackingmore-php-client/v)](https://packagist.org/packages/valbeat/trackingmore-php-client) [![License](http://poser.pugx.org/valbeat/trackingmore-php-client/license)](https://packagist.org/packages/valbeat/trackingmore-php-client) [![PHP Version Require](http://poser.pugx.org/valbeat/trackingmore-php-client/require/php)](https://packagist.org/packages/valbeat/trackingmore-php-client)
 
 A PHP client library for the TrackingMore API.
 
